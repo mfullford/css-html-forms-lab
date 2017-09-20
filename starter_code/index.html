@@ -3,6 +3,7 @@
 <head>
 	<title>CSS HTML Forms Lab</title>
 	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Proza+Libre:400,700,800" rel="stylesheet">
 </head>
 <body>
 	<section id="main">
@@ -11,10 +12,12 @@
 					<h1>My Dev Story</h1>
 					<div class="row formGroup">
 					    <label for="name">Name:</label>
+					    </br>
 					    <input id="name" name="name" >
 				    </div>
 					<div class="row formGroup">
 				    	<label for="verb-1">Verb:</label>
+				    	</br>
 				    	<select id="verb-1" name="verb-1">
 				    		<optgroup label="Cautious">
 					    		<option>consider</option>
@@ -35,6 +38,7 @@
 					</div>
 					<div class="row formGroup">
 				    	<label for="mission">Misison Statement:</label>
+				    	</br>
 				    	<textarea id="mission" name="mission"></textarea>
 					</div>
 
@@ -58,6 +62,7 @@
 					
 					<div class="row formGroup">
 				    	<label for="noun-1">Noun:</label>
+				    	</br>
 				    	<input id="noun-1" name="noun-1">
 					</div>
 					<div class="row formGroup">
@@ -81,10 +86,11 @@
 					</div>
 					<div class="row formGroup">
 				    	<label for="noun-2">Noun:</label>
+				    	</br>
 				    	<input id="noun-2" name="noun-2">
 					</div>
 					<div class="row formGroup">
-				    	<input type="submit">
+				    		<input class="button" type="submit">
 				    </div>
 				    
 			    </div>
@@ -97,39 +103,56 @@
 	<script type="text/javascript">
 
 		var main = $('#main');
+		$( "<section class='container results'></section>" ).appendTo(main);
+		var $results = $('.results');
+
+			let $inputElements = {
+			name: $('input[name=name]'),
+			verb1: $('select[name=verb-1'),
+			mission: $('textarea[name=mission]'),
+			sentiment: $('input[name=sentiment]'),
+			noun1: $('input[name=noun-1]'),
+			adjectives: $('input[name=adjective-2]'),
+			noun2: $('input[name=noun-2]')
+		};
+		
+
 		function makeResults() {
-
-			$( "<section class='container results'><h1>A True Story:</h1>" ).appendTo(main);
-
-			// JS Native:
-			// var results = document.createElement('section');
-			// results.innerHTML = '<h1>' + 'A true story:' + '</h1>';
-			// results.className = 'container results';
-			// main.appendChild(results);
+			const inputAnswers = {
+			name: $inputElements.name.val(),
+			verb1: $inputElements.verb1.val(),
+			mission: $inputElements.mission.val(),
+			sentiment: $inputElements.sentiment.val(),
+			noun1: $inputElements.noun1.val(),
+			adjectives: $inputElements.adjectives.filter(':checked')
+				.map(function(){return this.value})
+				.get().join(", "),
+			noun2: $inputElements.noun2.val()
 		};
 
+
+		const inputAnswers = {
+			name: $inputElements.name.val(),
+			verb1: $inputElements.verb1.val(),
+			mission: $inputElements.mission.val(),
+			sentiment: $inputElements.sentiment.val(),
+			noun1: $inputElements.noun1.val(),
+			adjectives: $inputElements.adjectives.filter(':checked')
+				.map(function(){return this.value})
+				.get().join(", "),
+			noun2: $inputElements.noun2.val()
+		};
+
+		$results.append('<h2>A True Story:</h2>');
+		$('.results').append('<p>' + resultsParagraph);
+	};
+
 		$("form").on("submit", function(event){
-
-		    // Stop the form from submitting
-
-	    	// Run the 'makeResults' function seen above
-
-	    	/*
-			
-				For each value entered into a form input, add the input to the corresponding sentence, then append the text into the results section:
-
-				"Once upon a time there was a Developer named NAME."
-
-				"NAME came to General Asssembly to VERB1 the great mountain of programming knowledge."
-
-				""MISSION", NAME shouted."
-	
-				"Though SENTIMENT, NAME was able to overcome all obstacles with the power of their NOUN."
-
-				"In the end, their success can be contributed entirely to their " + ADJECTIVE2[list each one checked, comma-separated] + NOUN2."
-
-	    	*/ 
+		    event.preventDefault();
+	    	makeResults();
+	    	
 		});
+
 	</script>
 
 </body>
