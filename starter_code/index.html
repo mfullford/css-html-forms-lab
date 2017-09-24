@@ -3,7 +3,7 @@
 <head>
 	<title>CSS HTML Forms Lab</title>
 	<link rel="stylesheet" href="style.css">
-	<link href="https://fonts.googleapis.com/css?family=Proza+Libre:400,700,800" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Proza+Libre" rel="stylesheet">
 </head>
 <body>
 	<section id="main">
@@ -12,12 +12,10 @@
 					<h1>My Dev Story</h1>
 					<div class="row formGroup">
 					    <label for="name">Name:</label>
-					    </br>
 					    <input id="name" name="name" >
 				    </div>
 					<div class="row formGroup">
 				    	<label for="verb-1">Verb:</label>
-				    	</br>
 				    	<select id="verb-1" name="verb-1">
 				    		<optgroup label="Cautious">
 					    		<option>consider</option>
@@ -38,7 +36,6 @@
 					</div>
 					<div class="row formGroup">
 				    	<label for="mission">Misison Statement:</label>
-				    	</br>
 				    	<textarea id="mission" name="mission"></textarea>
 					</div>
 
@@ -62,7 +59,6 @@
 					
 					<div class="row formGroup">
 				    	<label for="noun-1">Noun:</label>
-				    	</br>
 				    	<input id="noun-1" name="noun-1">
 					</div>
 					<div class="row formGroup">
@@ -70,15 +66,15 @@
 						<label for="checkboxes">Sentiment:</label>
 						<div class="checkboxes">
 							<div class="check">
-							  <input id="check1" type="checkbox" name="adjective-2" value="powerful"> 
+							  <input id="check1" type="checkbox" name="adjective-2" class="chk" value="powerful"> 
 							  <label for="check1">powerful</label>
 							</div>
 							<div class="check">
-								<input id="check2" type="checkbox" name="adjective-2" value="honed">
+								<input id="check2" type="checkbox" name="adjective-2" class="chk" value="honed">
 								<label for="check2">honed</label> 
 							</div>
 							<div class="check">
-								<input id="check3" type="checkbox" name="adjective-2" value="dedicated"> 
+								<input id="check3" type="checkbox" name="adjective-2" class="chk" value="dedicated"> 
 								<label for="check3">dedicated</label>
 							</div>
 				    	</div>
@@ -86,11 +82,10 @@
 					</div>
 					<div class="row formGroup">
 				    	<label for="noun-2">Noun:</label>
-				    	</br>
 				    	<input id="noun-2" name="noun-2">
 					</div>
 					<div class="row formGroup">
-				    		<input class="button" type="submit">
+				    	<input class="button" type="submit">
 				    </div>
 				    
 			    </div>
@@ -101,12 +96,10 @@
 
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 	<script type="text/javascript">
-
 		var main = $('#main');
 		$( "<section class='container results'></section>" ).appendTo(main);
 		var $results = $('.results');
-
-			let $inputElements = {
+		let $inputElements = {
 			name: $('input[name=name]'),
 			verb1: $('select[name=verb-1'),
 			mission: $('textarea[name=mission]'),
@@ -114,23 +107,9 @@
 			noun1: $('input[name=noun-1]'),
 			adjectives: $('input[name=adjective-2]'),
 			noun2: $('input[name=noun-2]')
-		};
-		
-
+	};
 		function makeResults() {
-			const inputAnswers = {
-			name: $inputElements.name.val(),
-			verb1: $inputElements.verb1.val(),
-			mission: $inputElements.mission.val(),
-			sentiment: $inputElements.sentiment.val(),
-			noun1: $inputElements.noun1.val(),
-			adjectives: $inputElements.adjectives.filter(':checked')
-				.map(function(){return this.value})
-				.get().join(", "),
-			noun2: $inputElements.noun2.val()
-		};
-
-
+		
 		const inputAnswers = {
 			name: $inputElements.name.val(),
 			verb1: $inputElements.verb1.val(),
@@ -142,19 +121,28 @@
 				.get().join(", "),
 			noun2: $inputElements.noun2.val()
 		};
-
-		$results.append('<h2>A True Story:</h2>');
+		
+		const resultsParagraph = `
+			Once upon a time there was a Developer named ${inputAnswers.name}.
+			${inputAnswers.name} came to General Asssembly to ${inputAnswers.verb1} the great mountain of programming knowledge.
+			"${inputAnswers.mission}", ${inputAnswers.name} shouted.
+			Though ${inputAnswers.sentiment}, ${inputAnswers.name} was able to overcome all obstacles with the power of their ${inputAnswers.noun1}.
+			In the end, their success can be contributed entirely to their ${inputAnswers.adjectives} ${inputAnswers.noun2}.
+		`;
+		
+		$results.append('<h2>A True Story:</h2>');  
 		$('.results').append('<p>' + resultsParagraph);
 	};
-
 		$("form").on("submit", function(event){
-		    event.preventDefault();
-	    	makeResults();
+		    event.preventDefault();  
+	    	makeResults();     
 	    	
 		});
+
+
+		// The above was from group work we did the night it was assigned and I definitely did not understand it entirely! But I've walked myself through the lines and understand much more than before.
 
 	</script>
 
 </body>
 </html>
-

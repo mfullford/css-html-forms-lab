@@ -1,12 +1,35 @@
+
+	/*Make the Title twice as large as the body text, bold, and give it some nice margin.
+	Make the main container the full width of the page.
+	Make the two inner containers (the form and the results) float side by side, on the left side of the screen.
+	Every container, form, input, and button should have rounded corners.
+	Make sure the form itself fills the width of whatever container its in, but no larger than 500px.
+	The background should be #E3E6EC, and it should align to the middle of its container.
+	Every element should have nice, even padding or margin around it.
+	.row elements should be spaced out so they're not touching.
+	.formGroup elements should fill the width of their container, and be inline-block.
+	The labels inside of .formGroup should be on their own line above form options, fill the width of their container, and have top/bottom padding.
+	Radio buttons and checkbox options should each be on their own line, and indented a little. 
+	Radio buttons and checkbox labels should be directly to the right of their corresponding inputs, and the text should vertically align with the inputs. 
+	Text inputs, submit buttons, and select boxes should all be at least 48px tall. The should have 14px of padding around their text. 
+	Textareas should be at least 100px tall.
+	Text inputs, select boxes, and textareas should have a 1px border that's #CCC, and none of the default shadows.
+	The submit button should float to the right, be bolded, and only be as wide as the text makes it.
+	The submit button should be rga(39, 208, 127), but only 50% opacity. On hover, it should be 100% opacity.*/
+	
+
+
 /*-------- Utility Styles --------*/
+
 * {
 	box-sizing: border-box; 
 	font-family: 'Proza Libre', sans-serif;
 }
 
 h1 {
-	font-size: 250%;
+	font-size: 30px;
 	font-weight: bold;
+	margin: 20px;
 }
 
 
@@ -14,89 +37,124 @@ h1 {
 
 
 #main {
-	width: 100%;
+	wdith: 100%;
 }
-
 
 input {
-	border-radius: 3px;
-	width: 100%;
-	min-height: 48px;
+	border-radius: 5px;
+	border: 1px #CCC;
+	display: block;
+	height: 48px;
 	padding: 14px;
-	border: 1px thin #CCC;
 }
+
 textarea {
-	border-radius: 3px; 
-	width: 100%;
-	min-height: 100px;
-	border: 1px;
-	border-color: #CCC;
+	border-radius: 5px;
+	border: 1px #CCC;
+	border-style: none;
+	display: block;
+	padding: 14px;
 }
 
-
-.form {
-	float: left;
-	max-width: 500px;
-	background-color: #E3E6EC;
-	padding: 25px;
-	margin: 5px;
+#main {
+	border-radius: 5px;
 }
-
-.containerResults {
-	float: right;
-}
-
-
 
 /*-------- Form Styles --------*/
 
-
 .row {
-	margin-top: 10px;
-	margin-bottom: 3px;
+	padding: 20px;	
+}
+
+form {
+	background-color: #E3E6EC;
+	border-radius: 10px;
+	padding: 10px;
+	max-width: 500px;
+}
+
+.formSection {
+	display: inline-block;
+	float: left;
+	width: 50%;
 }
 
 .formGroup {
-	width: 100%;
 	display: inline-block;
-	padding-top: 3px;
-	padding-bottom: 2px;
+	width: 100%;
+	padding-top: 10px;
 }
 
-#radio2 {
-	text-indent: 5px;
+#name {
+	width: 100%;
 }
 
 #verb-1 {
-	height: 48px;
-	padding: 14px;
 	width: 100%;
 	border: 1px #CCC;
+	border-style: none;
 }
 
-.button{
+#mission {
+	width: 100%;
+	height: 100px;
+}
+
+#noun-1 {
+	width: 100%;
+}
+
+#noun-2 {
+	width: 100%;
+}
+
+div.radio input{
+	display: inline-block;
+	margin-left: 10px;
+	margin-top: 10px;
+	vertical-align: -14px;
+}
+
+div.check {
+	margin-bottom: 20px;
+}
+
+div.check input{
+	display: inline-block;
+	margin-left: 10px;
+	margin-top: 20px;
+	height: 15px;
+}
+
+label {
+	vertical-align: 3px;
+}
+
+#button{
+	background-color: rgba(39, 208, 127, .5);
 	float: right;
 	font-weight: bold;
-	background-color: rgba(39, 208, 127, 51);
-	float: right;
-	width: 80px;
-	border-radius: 3px;
+	width: 20%;
 }
 
-.button:hover {
+#button:hover {
 	background-color: rgba(39, 208, 127, 1);
 }
 
-
-
 /*-------- Results Styles --------*/
 
-
 .results {
-	width: 100%;
-	max-width: 500px;
 	background-color: #C8DBB3;
-	padding: 5px;
+	border-radius: 10px;
+	width: 48%;
+	max-width: 500px;
+	padding: 14px;
+	display: block;
 }
-
+#paragraph {
+	background-color: rgba(39, 208, 127, .5);
+	float: left;
+	width: 50%;
+	max-width: 500px;
+}
 
